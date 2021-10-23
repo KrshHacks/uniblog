@@ -1,1 +1,15 @@
-<div>Hello World!</div>
+---
+import Layout from '@layouts/index.astro'
+
+import Blogs from '@components/Blogs.astro'
+import Navbar from '@components/Navbar.astro'
+import Explore from '@components/Explore.astro'
+---
+
+<Layout>
+    <Navbar />
+    <main class="content">
+        <Explore />
+        <Blogs /> 
+    </main>
+</Layout>

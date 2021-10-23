@@ -1,0 +1,17 @@
+@import url('https://cdn.jsdelivr.net/npm/normalize.css@8/normalize.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+*, ::before, ::after {
+  box-sizing: border-box;
+}
+
+.page {
+  font-family: 'Poppins', sans-serif;
+  min-height: 100vh;
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}

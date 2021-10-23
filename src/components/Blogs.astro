@@ -1,0 +1,34 @@
+---
+import * as request from 'node-fetch'
+import { oneLine } from 'common-tags'
+
+import Blog from './Util/Blog.astro'
+
+const response = await request('https://api.hashnode.com', {
+  method: 'POST',
+  headers: {
+    'Accept-Encoding': 'gzip, deflate, br',
+    'Content-Type': 'application/json',
+    'Accept': 'application/json',
+    'Authorization': process.env.SNOWPACK_HASHNODE_TOKEN,
+  },
+  body: JSON.stringify({
+    query: oneLine`{
+      storiesFeed(type: COMMUNITY, page: 0) {
+        title
+        coverImage
+        slug
+        brief
+      }
+    }`
+  }),
+})
+
+const blogs = (await response.json()).data.storiesFeed
+---
+
+<main style="padding: 2rem;">
+{blogs.map((blog) => (
+  <Blog blog={blog} />
+))}
+</main>

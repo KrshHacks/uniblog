@@ -1,0 +1,121 @@
+---
+import * as request from 'node-fetch'
+
+const githubRes = await request('https://gh-trending-api.herokuapp.com/repositories', {
+  method: 'GET',
+  headers: {
+    'Accept-Encoding': 'gzip, deflate, br',
+    'Content-Type': 'application/json',
+    'Accept': 'application/json',
+  }
+})
+
+const github = (await githubRes.json())
+
+github.length = 7
+
+const stackoverflowRes = await request('https://api.stackexchange.com/2.3/questions?page=1&pagesize=7&order=asc&sort=activity&site=stackoverflow', {
+  method: 'GET',
+  headers: {
+    'Accept-Encoding': 'gzip, deflate, br',
+    'Content-Type': 'application/json',
+    'Accept': 'application/json',
+  }
+})
+
+const stackoverflow = (await stackoverflowRes.json()).items
+
+stackoverflow.length = 5
+
+import data from '@data/resources.json'
+---
+
+<aside class="resource">
+  <div class="github">
+  <h4>GitHub Explore</h4>
+  {github.map(repo => (
+      <div class="explore-item">
+          <a class="explore-link" href={repo.url} alt={`Visit Trending #${repo.rank} repo on GitHub`}>
+            {repo.repositoryName}
+          </a>
+      </div>
+  ))}
+  </div>
+  <div class="stackoverflow">
+  <h4>Top StackOverflow Ques</h4>
+  {stackoverflow.map(question => (
+      <div class="explore-item">
+          <a class="explore-link" href={question.link}>
+            {question.title}
+          </a>
+      </div>
+  ))}
+  </div>
+    <div class="tool">
+    <h2>Tool of the day</h2>
+    <a href={data.tool.link} alt={data.tool.title}>
+      <img src={data.tool.image} alt={data.tool.title}>
+    </a>
+    <a href={data.tool.link} alt={data.tool.name}>
+      <h4>{data.tool.title}</h4>
+    </a>
+    <a href={data.tool.link} alt={data.tool.name}>
+      <button>Learn more about {data.tool.name}!</button>
+    </a>
+  </div>
+  <div class="learn">
+    <h2>Learning Resource of the day</h2>
+    <a href={data.learn.link} alt={data.learn.title}>
+      <img src={data.learn.image} alt={data.learn.title}>
+    </a>
+    <a href={data.learn.link} alt={data.learn.name}>
+      <h4>{data.learn.title}</h4>
+    </a>
+    <a href={data.learn.link} alt={data.learn.name}>
+      <button>Learn more about {data.learn.name}!</button>
+    </a>
+  </div>
+</aside>
+
+<style>
+.resource {
+    display: flex;
+    align-items: flex-start;
+    max-height: max-content;
+    flex-direction: column;
+    padding: 1rem 2rem;
+    max-width: 30vw;
+    position: sticky;
+    background: hsla(0, 0%, 98%, 1);
+    border-radius: 5px;
+}
+
+.resource h4 {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+}
+
+.resource div {
+    margin: 0.75rem 0;
+}
+
+.resource a {
+    color: #0092FF;
+    text-decoration: none;
+}
+
+.resource img {
+  aspect-ratio: 16 / 9;
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 5px;
+}
+
+.resource button {
+  background: #0092FF;
+  border: 0;
+  color: #fff;
+  padding: 0.5rem 0.75rem;
+  border-radius: 5px;
+}
+</style>

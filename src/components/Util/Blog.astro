@@ -1,0 +1,66 @@
+---
+const blog = Astro.props.blog
+---
+
+<div class="blog">
+  <div class="blog-image">
+    <a href={`https://hashnode.com/${blog.slug}`}>
+      <img src={blog.coverImage} alt={blog.title}>
+    </a>
+  </div>
+  <div class="blog-content">
+    <a href={`https://hashnode.com/${blog.slug}`}>
+        <h3 class="blog-title">{blog.title}</h3>
+    </a>
+    <p class="blog-text">{blog.brief}</p>
+    <a href={`https://hashnode.com/${blog.slug}`}>
+      <button role="link">Read article!</button>
+    </a>
+  </div>
+</div>
+
+
+<style>
+.blog {
+  max-width: 60vw;
+  display: flex;
+  padding: 1rem;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 0 1rem;
+}
+
+.blog-image {
+  flex-basis: 100%;
+  margin: 0 1rem;
+}
+
+.blog-image img {
+  aspect-ratio: 16 / 9;
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 5px;
+}
+
+.blog-content {
+  flex-basis: 100%;
+  margin: 0 1rem;
+}
+
+.blog a {
+  color: #000;
+  text-decoration: none;
+}
+
+.blog button {
+  background: #0092FF;
+  border: 0;
+  color: #fff;
+  padding: 0.5rem 0.75rem;
+  border-radius: 5px;
+}
+
+.blog:nth-of-type(even) {
+  flex-direction: row-reverse;
+}
+</style>

@@ -1,6 +1,7 @@
 {
   "name": "web3community.github.io",
   "version": "0.0.1",
+  "type": "module",
   "private": true,
   "scripts": {
     "dev": "astro dev",
@@ -8,11 +9,11 @@
     "build": "astro build",
     "preview": "astro preview"
   },
-  "dependencies": {
-    "postcss": "^8.3.10",
-    "tailwindcss": "^2.2.17",
+  "devDependencies": {
     "@snowpack/plugin-dotenv": "^2.2.0",
     "@snowpack/plugin-optimize": "^0.2.13",
-    "astro": "^0.20.12"
+    "astro": "^0.20.12",
+    "common-tags": "^1.8.0",
+    "node-fetch": "^3.0.0"
   }
 }

@@ -12,10 +12,6 @@ import fs from 'fs/promises'
 
 async function exportConfig() {
   return {
-    mode: process.env.NODE_ENV ?? 'development',
-    root: '.',
-    workspaceRoot: '.',
-    // install: [], // Deprecated! Moved to packageOptions.knownEntrypoints
     exclude: [
       '**/node_modules/**/*',
       '**/dist/**/*'
@@ -27,29 +23,19 @@ async function exportConfig() {
       '@components': './src/components',
       '@pages': './src/pages',
       '@layouts': './src/layouts',
+      '@data': './src/data',
       '@public': './public',
     },
     plugins: [
       '@snowpack/plugin-dotenv',
-      '@snowpack/plugin-optimize',
+      '@snowpack/plugin-optimize'
     ],
     devOptions: {
       secure: await checkSSL(),
       output: 'dashboard',
     },
-    packageOptions: {
-      external: [],
-      source: 'local',
-      knownEntrypoints: [],
-      polyfillNode: true,
-      env: {},
-      packageLookupFields: [],
-      packageExportLookupFields: [],
-      rollup: {}
-    },
     buildOptions: {
       out: 'dist',
-      baseUrl: '/',
       clean: true,
       cacheDirPath: '.cache',
       sourcemap: false,
