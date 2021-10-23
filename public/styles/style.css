@@ -13,5 +13,22 @@
 .content {
   display: flex;
   justify-content: space-between;
-  flex-wrap: wrap;
+}
+
+@media screen and (max-width: 1200px) {
+  .resources {
+    max-width: 10vw;
+    padding: 0.5rem;
+  }
+  .blog {
+    max-width: 40vw;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .content {
+    flex-wrap: wrap;
+  }
 }
