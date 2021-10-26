@@ -1,14 +1,14 @@
 {
     "learn": {
-        "title": "FreeCodeCamp - Learn to code — for free.",
-        "name": "FCC",
-        "image": "https://res.cloudinary.com/practicaldev/image/fetch/s--lfMhrPQM--/c_imagga_scale,f_auto,fl_progressive,h_900,q_auto,w_1600/https://dev-to-uploads.s3.amazonaws.com/i/rphqzfoh2cbz3zj8m8t1.png",
-        "link": "https://freecodecamp.org"
+        "title": "TheOdinProject - Your Career in Web Development Starts Here",
+        "name": "TheOdinProject",
+        "image": "https://miro.medium.com/max/1200/1*MkqZ_uuiUtaUKu3LCl6YfQ.png",
+        "link": "https://www.theodinproject.com/"
     },
     "tool": {
-        "title": "Twilio - Communication APIs for SMS, Voice, Video and Authentication",
-        "name": "Twilio",
-        "image": "data:image/png;base64,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",
-        "link": "https://twilio.com"
+        "title": "StoryBlok - Organize your content for the world",
+        "name": "StoryBlok",
+        "image": "https://img.storyblok.com/T9wbg46vZBXa6O92CXZLHzeAKMQ=/900x0/filters:format(jpg)/f/88751/1734x1092/c3cde09986/storyblok-editor-1.jpg",
+        "link": "https://www.storyblok.com/"
     }
 }
